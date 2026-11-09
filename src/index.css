@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --color-background: var(--bg);
+  --color-surface: var(--sf);
+  --color-border: var(--bd);
+  --color-foreground: var(--tx);
+  --color-muted: var(--mu);
+  --color-primary: var(--pr);
+  --color-primary-hover: var(--ph);
+  --color-accent: var(--ac);
+  --color-danger: var(--dg);
+
+  --radius-2xl: 1rem;
+}
+
+/* ── Light palette ────────────────────────────────────── */
+:root {
+  --bg: #FAFAF7;
+  --sf: #FFFFFF;
+  --bd: #ECECE6;
+  --tx: #1F2A24;
+  --mu: #6B7770;
+  --pr: #5E8C73;
+  --ph: #4C7660;
+  --ac: #F2A57C;
+  --dg: #E58B86;
+}
+
+/* ── Dark palette ─────────────────────────────────────── */
+.dark {
+  --bg: #0F1411;
+  --sf: #161D19;
+  --bd: #232C27;
+  --tx: #E8EEE9;
+  --mu: #93A199;
+  --pr: #7FB297;
+  --ph: #6A9E82;
+  --ac: #F0A97F;
+  --dg: #E58B86;
+}
+
+/* ── Base ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  border-color: var(--bd);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg);
+  color: var(--tx);
+  transition: background-color 300ms ease, color 300ms ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ring ───────────────────────────────────────── */
+.focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px color-mix(in srgb, var(--pr) 40%, transparent);
+}
+
+/* ── Theme transition ─────────────────────────────────── */
+.theme-transition {
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+
+/* ── Scrollbar ────────────────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Range slider ─────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--bd);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--pr);
+  cursor: pointer;
+  border: 2px solid var(--sf);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--pr);
+  cursor: pointer;
+  border: 2px solid var(--sf);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pr) 40%, transparent);
+}
+input[type="range"]:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pr) 40%, transparent);
+}
+
+/* ── Reduced motion ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
